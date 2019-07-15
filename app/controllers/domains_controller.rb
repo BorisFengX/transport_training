@@ -1,6 +1,6 @@
 class DomainsController < ApplicationController
 
-  before_action :find_domain, only: [:show, :edit, :update, :destroy]
+  # before_action :find_domain, only: [:show, :edit, :update, :destroy]
 
   def index
     @domains = Domain.all
@@ -14,11 +14,25 @@ class DomainsController < ApplicationController
 
 
   def show
+    @domains = Domain.all
+    # @domains = domains
     if params[:id]
       @competencies = Competency.where(domain_id: params[:id])
+      @domain = Domain.find_by(id: params[:id])
     else
       @competencies = Domain.all.first.competencies
+      @domain = Domain.all.first
     end
+    @class = []
+    @domains.each do |d|
+      if d.name != @domain.name
+        # @domains_inactive << d
+        @class << "tab-underlined"
+      else
+        @class << "tab-underlined active"
+      end
+    end
+
   end
 
   private
@@ -27,7 +41,7 @@ class DomainsController < ApplicationController
     params.require(:domain).permit(:name)
   end
 
-  def find_domain
-    @domain = Domain.find(params[:id])
-  end
+  # def find_domain
+  #   @domain = Domain.find(params[:id])
+  # end
 end

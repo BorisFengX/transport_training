@@ -1,18 +1,11 @@
 <div class="page-wrapper">
   <div class="tab-wrapper">
     <ul class="list-inline tabs-underlined">
+      <% @domains.each do |d| %>
       <li>
-        <a href="#" class="tab-underlined active">Purchase</a>
+        <%= link_to d.name, domain_path(d), class: @class[@domains.index(d)] %>
       </li>
-      <li>
-        <a href="#" class="tab-underlined">Supply</a>
-      </li>
-      <li>
-        <a href="#" class="tab-underlined">CI</a>
-      </li>
-      <li>
-        <a href="#" class="tab-underlined">Management</a>
-      </li>
+      <% end %>
     </ul>
   </div>
 

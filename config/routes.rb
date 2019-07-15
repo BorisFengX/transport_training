@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'domains#index'
 
+  resources :domains, only: [:index, :show] do
+  end
 
   resources :competencies, only: [:index, :show] do
     collection do

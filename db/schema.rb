@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_053032) do
 
   create_table "domains", force: :cascade do |t|
     t.string "name"
+    t.string "pic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_053032) do
     t.string "code"
     t.string "name"
     t.string "role"
+    t.string "avatar"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,5 +1,5 @@
-name
-PURCHASE
-SUPPLY
-CI
-MANAGEMENT
+name;pic
+PURCHASE;https://res.cloudinary.com/drhfqovp5/image/upload/v1563180884/purchase.jpg
+SUPPLY;https://res.cloudinary.com/drhfqovp5/image/upload/v1563181110/supply.jpg
+CI;https://res.cloudinary.com/drhfqovp5/image/upload/v1563181898/ci.jpg
+MANAGEMENT;https://res.cloudinary.com/drhfqovp5/image/upload/v1563182245/management.png

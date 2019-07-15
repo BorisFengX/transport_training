@@ -15,6 +15,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+
+gem 'bootstrap-sass', '~> 3.3.7'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

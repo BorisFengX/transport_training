@@ -11,7 +11,7 @@ puts "created #{Team.all.length} teams"
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 filepath2    = File.dirname(__FILE__) + '/seeds/user.csv'
 CSV.foreach(filepath2, csv_options) do |row|
-user = User.new(name: "#{row['name']}", code: "#{row['code']}", role: "#{row['role']}")
+user = User.new(name: "#{row['name']}", code: "#{row['code']}", role: "#{row['role']}", avatar: "#{row['avatar']}")
 user.team = Team.find_by(name: "#{row['team']}")
 user.save!
 end
@@ -20,7 +20,7 @@ puts "created #{User.all.length} users"
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 filepath2    = File.dirname(__FILE__) + '/seeds/domain.csv'
 CSV.foreach(filepath2, csv_options) do |row|
-Domain.create(name: "#{row['name']}")
+Domain.create(name: "#{row['name']}", pic: "#{row['pic']}")
 end
 puts "created #{Domain.all.length} domains"
 

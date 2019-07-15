@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 2019_07_15_053032) do
   create_table "competencies", force: :cascade do |t|
     t.string "name"
     t.string "level"
+    t.string "roadbook"
+    t.string "elearning"
+    t.string "evaluation"
     t.bigint "domain_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_053032) do
     t.string "name"
     t.string "role"
     t.string "avatar"
+    t.string "pass"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

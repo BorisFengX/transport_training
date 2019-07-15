@@ -14,7 +14,11 @@ class DomainsController < ApplicationController
 
 
   def show
-    @competencies = Competency.where(domain_id: params[:id])
+    if params[:id]
+      @competencies = Competency.where(domain_id: params[:id])
+    else
+      @competencies = Domain.all.first.competencies
+    end
   end
 
   private

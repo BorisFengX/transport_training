@@ -27,7 +27,7 @@ puts "created #{Domain.all.length} domains"
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 filepath2    = File.dirname(__FILE__) + '/seeds/competency.csv'
 CSV.foreach(filepath2, csv_options) do |row|
-competency = Competency.new(name: "#{row['name']}", level: "#{row['level']}")
+competency = Competency.new(name: "#{row['name']}", level: "#{row['level']}", roadbook: "#{row['roadbook']}", elearning: "#{row['elearning']}", evaluation: "#{row['evaluation']}")
 competency.domain = Domain.find_by(name: "#{row['domain']}")
 competency.save!
 end

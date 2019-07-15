@@ -1,16 +1,43 @@
 <div class="page-wrapper">
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="#" class="tab-underlined active">Purchase</a>
-    </li>
-    <li>
-      <a href="#" class="tab-underlined">Supply</a>
-    </li>
-    <li>
-      <a href="#" class="tab-underlined">CI</a>
-    </li>
-    <li>
-      <a href="#" class="tab-underlined">Management</a>
-    </li>
-  </ul>
+  <div class="tab-wrapper">
+    <ul class="list-inline tabs-underlined">
+      <li>
+        <a href="#" class="tab-underlined active">Purchase</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined">Supply</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined">CI</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined">Management</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="list-wrapper">
+    <% @competencies.each do |c|%>
+      <div class="card-flat">
+        <div class="flat-card-left">
+          <%= c.name %>
+        </div>
+        <div class="flat-card-right">
+          <div>
+            <%= c.level.downcase.capitalize %>
+          </div>
+          <div>
+            <p>r</p>
+          </div>
+          <div>
+            <p>e</p>
+          </div>
+          <div>
+            <p>a</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
 </div>

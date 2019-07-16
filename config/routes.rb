@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   # end
   resources :users, only: [:index, :show]do
   end
+
+  get 'team_dashboard', to: 'users#team_dashboard'
   # resources :cocktails do
 
   #   collection do

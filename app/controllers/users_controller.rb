@@ -66,6 +66,10 @@ class UsersController < ApplicationController
     # @doses = Dose.where(user_id: params[:id])
   end
 
+  def team_dashboard
+
+  end
+
   # def new
   #   @user = User.new
   # end

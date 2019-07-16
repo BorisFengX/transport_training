@@ -1,0 +1,64 @@
+<%= render 'shared/navbarwhite' %>
+<div class="page-wrapper">
+  <div class="chart-wrapper">
+    <div class="vertical-box center">
+      <img class="avatar-large" alt="avatar" src='<%= @user.avatar != "" ? @user.avatar : "http://img2.3lian.com/2014/gif/10/9/17.jpg" %>'>
+      <div>
+        <%= @user.name %>
+      </div>
+      <div>
+        <%= @user.role %>
+      </div>
+      <div>
+        <%= @user.team.name %>
+      </div>
+    </div>
+
+    <div class="vertical-box">
+      <% @user_dashboard.each do |u| %>
+        <div class="flat-box margin-bottom">
+          <div style="width:120px">
+            <%= u[0] %>
+          </div>
+          <div style="width:60px;">
+            <li>Real</li>
+            <li>Target</li>
+          </div>
+          <div class="flat-box no-margin">
+            <% u[1].each do |c| %>
+              <div class='vertical-box no-margin'>
+                <div>
+                  <%= link_to competency_path(c[0].competency) do%>
+                    <i class="fas fa-gem" style='<%= c[1] %>'></i>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to competency_path(c[0].competency) do%>
+                    <i class="fas fa-gem" style='<%= c[2] %>'></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="vertical-box">
+        <li><i class="fas fa-gem" style="color: grey"></i>Level 0: <%= @level_real_count[0] %> Topics - I'm not trained</li>
+        <li><i class="fas fa-gem" style="color: green"></i>Level 1: <%= @level_real_count[1] %> Topics - I'm trained but not apply in real case</li>
+        <li><i class="fas fa-gem" style="color: blue"></i>Level 2: <%= @level_real_count[2] %> Topics - I'm trained and able to operate fairly</li>
+        <li><i class="fas fa-gem" style="color: orange"></i>Level 3: <%= @level_real_count[3] %> Topics - I'm validated/I'm autonomous to work</li>
+        <li><i class="fas fa-gem" style="color: red"></i>Level 4: <%= @level_real_count[4] %> Topics - I'm referent/I can coach</li>
+    </div>
+
+    <div class="vertical-box">
+        <li>Target validation: <%= @target_validation %> Topics</li>
+        <li>Real validation: <%= @real_validation %> Topics</li>
+        <li>Target referent: <%= @target_referent %> Topics</li>
+        <li>Real referent: <%= @real_referent %> Topics</li>
+
+    </div>
+  </div>
+
+</div>

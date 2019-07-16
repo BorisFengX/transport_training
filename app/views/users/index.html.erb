@@ -1,0 +1,16 @@
+<%= render 'shared/navbarwhite' %>
+<div class='page-wrapper'>
+  <div class='row'>
+    <% @users.each do |u| %>
+      <div class="col col-xs-4 col-sm-2 col-md-2">
+        <div class='card-small'>
+          <img class="avatar" alt="avatar" src='<%= u.avatar != "" ? u.avatar : "http://img2.3lian.com/2014/gif/10/9/17.jpg" %>'>
+          <div>
+
+          <%= link_to u.name, user_path(u) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

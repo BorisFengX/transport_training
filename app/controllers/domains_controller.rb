@@ -5,7 +5,6 @@ class DomainsController < ApplicationController
   def index
     @domains = Domain.all
   end
-
   # def filter
   #   # raise
   #   @domains = Domain.where("name LIKE '%#{params[:name]}%'")

@@ -1,3 +1,4 @@
+<%= render 'shared/navbarwhite' %>
 <div class="page-wrapper">
   <div class="tab-wrapper">
     <ul class="list-inline tabs-underlined">
@@ -13,20 +14,20 @@
     <% @competencies.each do |c|%>
       <div class="card-flat">
         <div class="flat-card-left">
-          <%= c.name %>
+          <%= link_to c.name, competency_path(c), class:'link-text'%>
         </div>
         <div class="flat-card-right">
           <div>
             <%= c.level.downcase.capitalize %>
           </div>
           <div>
-            <p>r</p>
+            <p><i class="fas fa-book-open"></i></p>
           </div>
           <div>
-            <p>e</p>
+            <p><i class="fas fa-chalkboard"></i></p>
           </div>
           <div>
-            <p>a</p>
+            <p><i class="fas fa-award"></i></p>
           </div>
         </div>
       </div>

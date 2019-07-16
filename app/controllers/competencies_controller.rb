@@ -1,19 +1,21 @@
 class CompetenciesController < ApplicationController
-  before_action :find_competency, only: [:show, :edit, :update, :destroy]
+  before_action :find_competency, only: [:show]
 
   def index
     @competencies = Competency.all
   end
 
-  def filter
-    # raise
-    @competencies = Competency.where("name LIKE '%#{params[:name]}%'")
-    # ("name LIKE '#{params[:name]}'")
-  end
+  # def filter
+  #   # raise
+  #   @competencies = Competency.where("name LIKE '%#{params[:name]}%'")
+  #   # ("name LIKE '#{params[:name]}'")
+  # end
 
 
   def show
-    @doses = Dose.where(competency_id: params[:id])
+
+    @joins = @competency.joins
+
   end
 
   # def new

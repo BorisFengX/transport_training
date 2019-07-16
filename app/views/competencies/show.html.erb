@@ -1,0 +1,63 @@
+<%= render 'shared/navbarwhite' %>
+<div class='page-wrapper'>
+  <div class="card-progress flat-box">
+    <div class="vertical-box">
+      <div>
+      <%= @competency.name %>
+      </div>
+      <div>
+      Domain: <%= @competency.domain.name.downcase.capitalize %>
+      </div>
+      <div>
+      Level: <%= @competency.level.downcase.capitalize %>
+      </div>
+
+      <div class="flat-box">
+        <div class="icon">
+          <p><i class="fas fa-book-open"> Roadbook</i></p>
+        </div>
+        <div class="icon">
+          <p><i class="fas fa-chalkboard"> E-learning</i></p>
+        </div class="icon">
+        <div class="icon">
+          <p><i class="fas fa-award"></i> Self-evaluation</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-box">
+      <ul>
+        <li>Level 0: I'm not trained</li>
+        <li>Level 1: I'm trained but not apply in real case</li>
+        <li>Level 2: I'm trained and able to operate fairly</li>
+        <li>Level 3: I'm validated/I'm autonomous to work</li>
+        <li>Level 4: I'm referent/I can coach</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <% @joins.each do |j| %>
+  <div class='card-progress'>
+    <div class='card-progress-left'>
+      <img class="avatar" alt="avatar" src='<%= j.user.avatar != "" ? j.user.avatar : "http://img2.3lian.com/2014/gif/10/9/17.jpg" %>'>
+      <div class='card-progress-text'>
+        <div class='link_black'>
+        <%= link_to j.user.name, user_path(j.user) %>
+        </div>
+        <div>
+        <%= j.user.role %>
+        </div>
+        <div>
+        <%= j.user.team.name %>
+        </div>
+      </div>
+    </div>
+    <div class="progress" style="width: 80%; height:30px; background-color: rgb(200,200,200)">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width:<%= j.real_level %>%" aria-valuenow='<%= j.real_level %>' aria-valuemin="0" aria-valuemax="4">Current level: <%= j.real_level %></div>
+    </div>
+  </div>
+  <% end %>
+
+
+</div>

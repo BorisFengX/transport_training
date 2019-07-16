@@ -4,15 +4,17 @@ Rails.application.routes.draw do
   resources :domains, only: [:index, :show] do
   end
 
-  resources :competencies, only: [:index, :show] do
-    collection do
-      get 'filter', to: 'competencies#filter'
-    end
-    resources :joins, only: [:new, :create, :destroy, :edit, :update]
+
+
+  resources :competencies, only: [:show] do
+    # collection do
+    #   get 'filter', to: 'competencies#filter'
+    # end
+    # resources :joins, only: [:index]
   end
 
-  resources :users do
-  end
+  # resources :users do
+  # end
   resources :users, only: [:index, :show]do
   end
   # resources :cocktails do

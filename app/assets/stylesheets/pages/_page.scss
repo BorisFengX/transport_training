@@ -2,10 +2,15 @@
   margin-top: 70px
 }
 
-.tab_wrapper {
 
-}
 
 .list_wrapper {
 
+}
+.chart-wrapper {
+  width: 100vw;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
 }

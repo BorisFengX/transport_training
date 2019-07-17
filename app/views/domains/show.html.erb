@@ -21,13 +21,19 @@
             <%= c.level.downcase.capitalize %>
           </div>
           <div>
-            <p><i class="fas fa-book-open"></i></p>
+            <%= link_to "#" do%>
+              <i class="fas fa-book-open" data-toggle="tooltip" title="Roadbook" style='color: #ff5a5f'></i>
+            <% end %>
           </div>
           <div>
-            <p><i class="fas fa-chalkboard"></i></p>
+            <%= link_to "#" do%>
+              <i class="fas fa-chalkboard" data-toggle="tooltip" title="E-learning" style='color: #ff5a5f'></i>
+            <% end %>
           </div>
           <div>
-            <p><i class="fas fa-award"></i></p>
+            <%= link_to "#" do%>
+              <i class="fas fa-award" data-toggle="tooltip" title="Self-evaluation" style='color: #ff5a5f'></i>
+            <% end %>
           </div>
         </div>
       </div>

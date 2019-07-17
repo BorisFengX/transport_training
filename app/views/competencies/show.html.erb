@@ -14,13 +14,20 @@
 
       <div class="flat-box">
         <div class="icon">
-          <p><i class="fas fa-book-open"> Roadbook</i></p>
+          <%= link_to "#" do%>
+              <i class="fas fa-book-open" data-toggle="tooltip" title="Roadbook" style='color: #ff5a5f'>Roadbook</i>
+          <% end %>
+          <!-- <p><i class="fas fa-book-open"> Roadbook</i></p> -->
         </div>
         <div class="icon">
-          <p><i class="fas fa-chalkboard"> E-learning</i></p>
+          <%= link_to "#" do%>
+              <i class="fas fa-chalkboard" data-toggle="tooltip" title="E-learning" style='color: #ff5a5f'>E-learning</i>
+          <% end %>
         </div class="icon">
         <div class="icon">
-          <p><i class="fas fa-award"></i> Self-evaluation</p>
+          <%= link_to "#" do%>
+              <i class="fas fa-award" data-toggle="tooltip" title="Self-evaluation" style='color: #ff5a5f'>Self-evaluation</i>
+          <% end %>
         </div>
       </div>
     </div>
@@ -40,7 +47,7 @@
   <% @joins.each do |j| %>
   <div class='card-progress'>
     <div class='card-progress-left'>
-      <img class="avatar" alt="avatar" src='<%= j.user.avatar != "" ? j.user.avatar : "http://img2.3lian.com/2014/gif/10/9/17.jpg" %>'>
+      <img class="avatar" alt="avatar" src='<%= j.user.avatar != "" ? j.user.avatar : "https://res.cloudinary.com/drhfqovp5/image/upload/v1563348075/17.jpg" %>'>
       <div class='card-progress-text'>
         <div class='link_black'>
         <%= link_to j.user.name, user_path(j.user) %>

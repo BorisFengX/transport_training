@@ -29,12 +29,12 @@
               <div class='vertical-box no-margin'>
                 <div>
                   <%= link_to competency_path(c[0].competency) do%>
-                    <i class="fas fa-gem" style='<%= c[1] %>'></i>
+                    <i class="fas fa-gem" data-toggle="tooltip" title="<%= c[0].competency.name %>" style='<%= c[1] %>'></i>
                   <% end %>
                 </div>
                 <div>
                   <%= link_to competency_path(c[0].competency) do%>
-                    <i class="fas fa-gem" style='<%= c[2] %>'></i>
+                    <i class="fas fa-gem" data-toggle="tooltip" title="<%= c[0].competency.name %>" style='<%= c[2] %>'></i>
                   <% end %>
                 </div>
               </div>

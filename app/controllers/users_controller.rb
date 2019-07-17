@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       color_real = classes[level_real]
       color_target = classes[level_target]
 
-      case j.competency.domain.name
+      case j.competency.domain.name.upcase
         when "PURCHASE"
           @purchase << [j, color_real, color_target]
         when "SUPPLY"
@@ -67,7 +67,64 @@ class UsersController < ApplicationController
   end
 
   def team_dashboard
+    domains = Domain.all
+    @data = {
+      # [target(overall),real(overall),real/target,validation target,v real, v rate, referent target, r real, r rate]
+      china: {total: [0,0,0,0,0,0,0,0,0], purchase:[0,0,0,0,0,0,0,0,0], supply:[0,0,0,0,0,0,0,0,0], ci:[0,0,0,0,0,0,0,0,0], management:[0,0,0,0,0,0,0,0,0]},
+      north: {total: [0,0,0,0,0,0,0,0,0], purchase:[0,0,0,0,0,0,0,0,0], supply:[0,0,0,0,0,0,0,0,0], ci:[0,0,0,0,0,0,0,0,0], management:[0,0,0,0,0,0,0,0,0]},
+      south: {total: [0,0,0,0,0,0,0,0,0], purchase:[0,0,0,0,0,0,0,0,0], supply:[0,0,0,0,0,0,0,0,0], ci:[0,0,0,0,0,0,0,0,0], management:[0,0,0,0,0,0,0,0,0]},
+      import: {total: [0,0,0,0,0,0,0,0,0], purchase:[0,0,0,0,0,0,0,0,0], supply:[0,0,0,0,0,0,0,0,0], ci:[0,0,0,0,0,0,0,0,0], management:[0,0,0,0,0,0,0,0,0]}
+    }
+    domains.each do |d|
+      competencies = d.competencies
+      competencies.each do |c|
+        joins = c.joins
+        joins.each do |j|
+          if j.user.team.name.downcase != 'direction'
+            @data[:china][d.name.downcase.to_sym][0] += 1
+            @data[:china][d.name.downcase.to_sym][1] += 1 if j.real_level >= j.target_level
+            @data[:china][:total][0] += j.target_level
+            @data[:china][:total][1] += j.real_level
+            @data[j.user.team.name.downcase.to_sym][d.name.downcase.to_sym][0] += 1
+            @data[j.user.team.name.downcase.to_sym][d.name.downcase.to_sym][1] += 1 if j.real_level >= j.target_level
+            @data[j.user.team.name.downcase.to_sym][:total][0] += j.target_level
+            @data[j.user.team.name.downcase.to_sym][:total][1] += j.real_level
+            if j.target_level > 2
+              # validation count
+              @data[:china][d.name.downcase.to_sym][3] += 1
+              @data[:china][d.name.downcase.to_sym][4] += 1 if j.real_level > 2
+              @data[:china][:total][3] += 1
+              @data[:china][:total][4] += 1 if j.real_level > 2
+              @data[j.user.team.name.downcase.to_sym][d.name.downcase.to_sym][3] += 1
+              @data[j.user.team.name.downcase.to_sym][d.name.downcase.to_sym][4] += 1 if j.real_level > 2
+              @data[j.user.team.name.downcase.to_sym][:total][3] += 1
+              @data[j.user.team.name.downcase.to_sym][:total][4] += 1 if j.real_level > 2
+              if j.target_level == 4
+                @data[:china][d.name.downcase.to_sym][6] += 1
+                @data[:china][d.name.downcase.to_sym][7] += 1 if j.real_level == 4
+                @data[:china][:total][6] += 1
+                @data[:china][:total][7] += 1 if j.real_level == 4
+                @data[j.user.team.name.downcase.to_sym][d.name.downcase.to_sym][6] += 1
+                @data[j.user.team.name.downcase.to_sym][d.name.downcase.to_sym][7] += 1 if j.real_level == 4
+                @data[j.user.team.name.downcase.to_sym][:total][6] += 1
+                @data[j.user.team.name.downcase.to_sym][:total][7] += 1 if j.real_level == 4
+              end
+            end
 
+          end
+        end
+      end
+    end
+
+    @data.each do |k,v|
+      v.each do |k,v|
+        v[2] = v[1]/v[0]
+        v[5] = v[4]/v[3]
+        v[8] = v[7]/v[6]
+      end
+    end
+    gon.data = @data
+    puts @data
   end
 
   # def new

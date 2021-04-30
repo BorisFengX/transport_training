@@ -17,7 +17,7 @@ gem 'webpacker'
 
 
 gem 'bootstrap-sass', '~> 3.3.7'
-gem 'gon', '~> 6.2', '>= 6.2.1'
+gem 'gon', '~> 6.4'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
